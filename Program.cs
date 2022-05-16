@@ -15,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<PharmaContext>();
 builder.Services.AddScoped<IPharmaRepository, PharmaRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 builder.Services.AddCors(options => {
@@ -25,13 +27,8 @@ builder.Services.AddCors(options => {
        .AllowAnyHeader());
 });
 
-var config = new AutoMapper.MapperConfiguration(cfg =>
-{
-    cfg.CreateMap<PharmaModel, PharmaDTO>()
-    .ForMember(dest => dest.PharmaId, opt => opt.MapFrom(x => x.PharmaId));
-});
-IMapper mapper = config.CreateMapper();
-builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 app.UseCors("CorsPolicy");

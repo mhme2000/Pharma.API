@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AgendaContatoController : ControllerBase
+    public class PharmaController : ControllerBase
     {
         private readonly IPharmaRepository _pharmaRepository;
         private readonly IMapper _mapper;
-        public AgendaContatoController(IPharmaRepository pharmaRepository, IMapper mapper)
+        public PharmaController(IPharmaRepository pharmaRepository, IMapper mapper)
         {
             _pharmaRepository = pharmaRepository;
             _mapper = mapper;
@@ -25,12 +25,12 @@ namespace Pharma.API.Controllers
             return Ok();
         }
 
-        [HttpGet("GetId/{agendaContatoId}")]
+        [HttpGet("GetId/{pharmaId}")]
         public IActionResult Get(int pharmaId)
         {
             var model = _pharmaRepository.GetById(pharmaId);
             if (model == null)
-                return NotFound("Contato não encontrado.");
+                return NotFound("Farmácia não encontrada.");
             return Ok(model);
         }
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Pharma.API.Controllers
         {
             var model = _pharmaRepository.GetAll();
             if (model == null)
-                return NotFound("Nenhum farmácia cadastrado.");
+                return NotFound("Nenhum farmácia cadastrada.");
             var result = _mapper.Map<IEnumerable<PharmaDTO>>(model);
 
             return Ok(result);
@@ -49,7 +49,7 @@ namespace Pharma.API.Controllers
         {
             var pharma = _pharmaRepository.GetById(model.PharmaId);
             if (pharma == null)
-                return NotFound("Farmácia não encontrado.");
+                return NotFound("Farmácia não encontrada.");
             _pharmaRepository.Update(model);
             return Ok();
         }
@@ -59,7 +59,7 @@ namespace Pharma.API.Controllers
         {
             var pharma = _pharmaRepository.GetById(pharmaId);
             if (pharma == null)
-                return NotFound("Contato não encontrado.");
+                return NotFound("Farmácia não encontrada.");
             _pharmaRepository.Delete(pharma);
             return Ok();
 

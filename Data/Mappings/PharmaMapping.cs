@@ -8,13 +8,13 @@ namespace Pharma.API.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<PharmaModel> builder)
         {
-            //builder.ToTable("Pharma");
+            builder.ToTable("Pharma");
 
-            //builder.HasKey(c => c.PharmaId);
-            //builder.Property(c => c.NomeContato).IsRequired().HasMaxLength(50);
-            //builder.Property(c => c.NumeroContato).IsRequired().HasMaxLength(20);
-            //builder.Property(c => c.FotoContato);
-            //builder.Property(c => c.EnderecoContato).HasMaxLength(50);
+            builder.HasKey(c => c.PharmaId);
+            builder.Property(c => c.PharmaId).ValueGeneratedOnAdd();
+            builder.Property(c => c.PharmaName).HasColumnType("text").IsRequired();
+            builder.HasMany(x => x.Users).WithOne(b => b.Pharma).HasForeignKey(b => b.PharmaId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 

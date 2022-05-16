@@ -9,12 +9,18 @@ namespace Pharma.API.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseNpgsql();
+            options.UseNpgsql(connectionString: "Host=localhost;Port=12350;Pooling=true;Database=Pharma;User Id=postgres;Password=123456;");
         }
         public DbSet<PharmaModel>? Pharma { get; set; }
+        public DbSet<UserModel>? User { get; set; }
+        public DbSet<UserTypeModel>? UserType { get; set; }
+        public DbSet<PersonModel>? Person { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PharmaMapping());
+            modelBuilder.ApplyConfiguration(new UserMapping());
+            modelBuilder.ApplyConfiguration(new UserTypeMapping());
+            modelBuilder.ApplyConfiguration(new PersonMapping());
         }
     }
 
