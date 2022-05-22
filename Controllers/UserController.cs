@@ -19,9 +19,8 @@ namespace Pharma.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] UserQuery query)
+        public IActionResult Add([FromBody] UserModel model)
         {
-            var model = _mapper.Map<UserModel>(query);
             _userRepository.Add(model);
             return Ok();
         }

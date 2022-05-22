@@ -4,7 +4,7 @@ namespace Pharma.API.Data.Interfaces
 {
     public interface IPersonRepository
     {
-        void Add(PersonModel pharma);
+        void Add(PersonModel person);
         PersonModel? GetById(int personId);
         IEnumerable<PersonModel>? GetAll();
         void Delete(PersonModel person);
