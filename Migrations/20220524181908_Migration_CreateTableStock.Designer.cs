@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pharma.API.Data;
@@ -11,9 +12,10 @@ using Pharma.API.Data;
 namespace Pharma.API.Migrations
 {
     [DbContext(typeof(PharmaContext))]
-    partial class PharmaContextModelSnapshot : ModelSnapshot
+    [Migration("20220524181908_Migration_CreateTableStock")]
+    partial class Migration_CreateTableStock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,42 +129,6 @@ namespace Pharma.API.Migrations
                     b.ToTable("ProductType", (string)null);
                 });
 
-            modelBuilder.Entity("Pharma.API.Model.StockItemModel", b =>
-                {
-                    b.Property<int>("StockItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StockItemId"));
-
-                    b.Property<int>("Balance")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Batch")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("ExpirationDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StockId")
-                        .HasColumnType("integer");
-
-                    b.Property<float>("UnitaryValue")
-                        .HasColumnType("real");
-
-                    b.HasKey("StockItemId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("StockId");
-
-                    b.ToTable("StockItem", (string)null);
-                });
-
             modelBuilder.Entity("Pharma.API.Model.StockModel", b =>
                 {
                     b.Property<int>("StockId")
@@ -183,100 +149,6 @@ namespace Pharma.API.Migrations
                     b.HasIndex("PharmaId");
 
                     b.ToTable("Stock", (string)null);
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.StockTransactionItemModel", b =>
-                {
-                    b.Property<int>("StockTransactionItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StockTransactionItemId"));
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("StockItemId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StockTransactionId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("StockTransactionItemId");
-
-                    b.HasIndex("StockItemId");
-
-                    b.HasIndex("StockTransactionId");
-
-                    b.ToTable("StockTransactionItem", (string)null);
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.StockTransactionModel", b =>
-                {
-                    b.Property<int>("StockTransactionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StockTransactionId"));
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("TransactionStatusId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TransactionTypeId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("StockTransactionId");
-
-                    b.HasIndex("TransactionStatusId");
-
-                    b.HasIndex("TransactionTypeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("StockTransaction", (string)null);
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.TransactionStatusModel", b =>
-                {
-                    b.Property<int>("TransactionStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("TransactionStatusId"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("TransactionStatusId");
-
-                    b.ToTable("TransactionStatus", (string)null);
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.TransactionTypeModel", b =>
-                {
-                    b.Property<int>("TransactionTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("TransactionTypeId"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("TransactionTypeId");
-
-                    b.ToTable("TransactionType", (string)null);
                 });
 
             modelBuilder.Entity("Pharma.API.Model.UnitOfMeasurementModel", b =>
@@ -363,25 +235,6 @@ namespace Pharma.API.Migrations
                     b.Navigation("UnitOfMeasurement");
                 });
 
-            modelBuilder.Entity("Pharma.API.Model.StockItemModel", b =>
-                {
-                    b.HasOne("Pharma.API.Model.ProductModel", "Product")
-                        .WithMany("StockItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Pharma.API.Model.StockModel", "Stock")
-                        .WithMany("StockItems")
-                        .HasForeignKey("StockId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Stock");
-                });
-
             modelBuilder.Entity("Pharma.API.Model.StockModel", b =>
                 {
                     b.HasOne("Pharma.API.Model.PharmaModel", "Pharma")
@@ -391,51 +244,6 @@ namespace Pharma.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Pharma");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.StockTransactionItemModel", b =>
-                {
-                    b.HasOne("Pharma.API.Model.StockItemModel", "StockItem")
-                        .WithMany("StockTransactionItems")
-                        .HasForeignKey("StockItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Pharma.API.Model.StockTransactionModel", "StockTransaction")
-                        .WithMany("StockTransactionItems")
-                        .HasForeignKey("StockTransactionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("StockItem");
-
-                    b.Navigation("StockTransaction");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.StockTransactionModel", b =>
-                {
-                    b.HasOne("Pharma.API.Model.TransactionStatusModel", "TransactionStatus")
-                        .WithMany("StockTransactions")
-                        .HasForeignKey("TransactionStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Pharma.API.Model.TransactionTypeModel", "TransactionType")
-                        .WithMany("StockTransactions")
-                        .HasForeignKey("TransactionTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Pharma.API.Model.UserModel", "User")
-                        .WithMany("StockTransactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TransactionStatus");
-
-                    b.Navigation("TransactionType");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Pharma.API.Model.UserModel", b =>
@@ -477,49 +285,14 @@ namespace Pharma.API.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Pharma.API.Model.ProductModel", b =>
-                {
-                    b.Navigation("StockItems");
-                });
-
             modelBuilder.Entity("Pharma.API.Model.ProductTypeModel", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Pharma.API.Model.StockItemModel", b =>
-                {
-                    b.Navigation("StockTransactionItems");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.StockModel", b =>
-                {
-                    b.Navigation("StockItems");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.StockTransactionModel", b =>
-                {
-                    b.Navigation("StockTransactionItems");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.TransactionStatusModel", b =>
-                {
-                    b.Navigation("StockTransactions");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.TransactionTypeModel", b =>
-                {
-                    b.Navigation("StockTransactions");
-                });
-
             modelBuilder.Entity("Pharma.API.Model.UnitOfMeasurementModel", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Pharma.API.Model.UserModel", b =>
-                {
-                    b.Navigation("StockTransactions");
                 });
 
             modelBuilder.Entity("Pharma.API.Model.UserTypeModel", b =>

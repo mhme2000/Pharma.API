@@ -15,6 +15,8 @@ namespace Pharma.API.Data.Mappings
             builder.Property(c => c.PharmaName).HasColumnType("text").IsRequired();
             builder.HasMany(x => x.Users).WithOne(b => b.Pharma).HasForeignKey(b => b.PharmaId)
             .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.Stocks).WithOne(b => b.Pharma).HasForeignKey(b => b.PharmaId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 

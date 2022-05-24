@@ -14,5 +14,7 @@ namespace Pharma.API.Model
         public int UnitOfMeasurementId { get; set; }
         [JsonIgnore]
         public UnitOfMeasurementModel? UnitOfMeasurement { get; set; }
+        private readonly List<StockItemModel> _stockItems = new List<StockItemModel>();
+        public IReadOnlyCollection<StockItemModel> StockItems => _stockItems;
     }
 }

@@ -18,6 +18,12 @@ namespace Pharma.API.Data
         public DbSet<ProductModel>? Product { get; set; }
         public DbSet<ProductTypeModel>? ProductType { get; set; }
         public DbSet<UnitOfMeasurementModel>? UnitOfMeasurement { get; set; }
+        public DbSet<StockModel>? Stock { get; set; }
+        public DbSet<StockItemModel>? StockItem { get; set; }
+        public DbSet<StockTransactionModel>? StockTransaction { get; set; }
+        public DbSet<StockTransactionItemModel>? StockTransactionItem { get; set; }
+        public DbSet<TransactionStatusModel>? TransactionStatus { get; set; }
+        public DbSet<TransactionTypeModel>? TransactionType { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PharmaMapping());
@@ -27,6 +33,12 @@ namespace Pharma.API.Data
             modelBuilder.ApplyConfiguration(new ProductMapping());
             modelBuilder.ApplyConfiguration(new ProductTypeMapping());
             modelBuilder.ApplyConfiguration(new UnitOfMeasurementMapping());
+            modelBuilder.ApplyConfiguration(new StockMapping());
+            modelBuilder.ApplyConfiguration(new StockItemMapping());
+            modelBuilder.ApplyConfiguration(new StockTransactionMapping());
+            modelBuilder.ApplyConfiguration(new StockTransactionItemMapping());
+            modelBuilder.ApplyConfiguration(new TransactionStatusMapping());
+            modelBuilder.ApplyConfiguration(new TransactionTypeMapping());
         }
     }
 

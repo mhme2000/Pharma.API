@@ -12,6 +12,8 @@ namespace Pharma.API.Data.Mappings
 
             builder.HasKey(c => c.ProductId);
             builder.Property(c => c.ProductId).ValueGeneratedOnAdd();
+            builder.HasMany(x => x.StockItems).WithOne(b => b.Product).HasForeignKey(b => b.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 

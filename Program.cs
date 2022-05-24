@@ -18,6 +18,8 @@ builder.Services.AddScoped<IPharmaRepository, PharmaRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<IStockItemRepository, StockItemRepository>();
 
 
 builder.Services.AddCors(options => {
