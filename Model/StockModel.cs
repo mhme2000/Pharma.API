@@ -8,7 +8,7 @@ namespace Pharma.API.Model
         public string Description { get; set; }
         public int PharmaId { get; set; }
         [JsonIgnore]
-        public PharmaModel? Pharma { get; set; }
+        public PharmaModel? Pharma { get; private set; }
         private readonly List<StockItemModel> _stockItems = new List<StockItemModel>();
         public IReadOnlyCollection<StockItemModel> StockItems => _stockItems;
     }

@@ -5,16 +5,16 @@ namespace Pharma.API.Model
     public class StockItemModel
     {
         public int StockItemId { get; private set; }
-        public int StockId { get; private set; }
+        public int StockId { get; set; }
         [JsonIgnore]
-        public StockModel? Stock { get; set; }
-        public int ProductId { get; private set; }
+        public StockModel? Stock { get; private set; }
+        public int ProductId { get; set; }
         [JsonIgnore]
-        public ProductModel? Product { get; set; }
-        public string Batch { get; private set; }
-        public DateTime ExpirationDate { get; private set; }
+        public ProductModel? Product { get; private set; }
+        public string Batch { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public int Balance { get; private set; }   
-        public float UnitaryValue { get; private set; }
+        public float UnitaryValue { get; set; }
         private readonly List<StockTransactionItemModel> _stockTransactionItems = new List<StockTransactionItemModel>();
         public IReadOnlyCollection<StockTransactionItemModel> StockTransactionItems => _stockTransactionItems;
     }

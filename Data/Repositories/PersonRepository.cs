@@ -19,12 +19,12 @@ namespace Pharma.API.Data.Repositories
 
         public PersonModel? GetById(int personId)
         {
-            return _context.Person?.AsNoTracking().FirstOrDefault(t => t.PersonId == personId);
+            return _context.Person?.AsNoTracking().Include(t => t.Addresses).FirstOrDefault(t => t.PersonId == personId);
         }
 
         public IEnumerable<PersonModel>? GetAll()
         {
-            return _context.Person?.Where(t => t.PersonId > 0);
+            return _context.Person?.Include(t => t.Addresses).Where(t => t.PersonId > 0);
         }
 
         public void Update(PersonModel person)

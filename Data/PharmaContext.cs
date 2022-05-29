@@ -24,6 +24,7 @@ namespace Pharma.API.Data
         public DbSet<StockTransactionItemModel>? StockTransactionItem { get; set; }
         public DbSet<TransactionStatusModel>? TransactionStatus { get; set; }
         public DbSet<TransactionTypeModel>? TransactionType { get; set; }
+        public DbSet<AddressModel>? Address { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PharmaMapping());
@@ -39,6 +40,7 @@ namespace Pharma.API.Data
             modelBuilder.ApplyConfiguration(new StockTransactionItemMapping());
             modelBuilder.ApplyConfiguration(new TransactionStatusMapping());
             modelBuilder.ApplyConfiguration(new TransactionTypeMapping());
+            modelBuilder.ApplyConfiguration(new AddressMapping());
         }
     }
 

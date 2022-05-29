@@ -5,6 +5,8 @@ namespace Pharma.API.Model
     public class UserModel
     {
         public int UserId { get; private set; }
+        public string User { get; set; }
+        public string Password { get; set; }
         public int PersonId { get; set; }
         [JsonIgnore]
         public PersonModel? Person { get; private set; }
