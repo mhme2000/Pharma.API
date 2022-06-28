@@ -13,7 +13,7 @@ namespace Pharma.API.Model
     {
         [Description("AMPOLA")]
         AMP = 1,
-        [Description("BILHÕES DE UNIDADES INTERNACIONAIS")]
+        [Description("BILHï¿½ES DE UNIDADES INTERNACIONAIS")]
         BUI = 2,
         [Description("BISNAGA")]
         BG = 3,
@@ -21,15 +21,15 @@ namespace Pharma.API.Model
         BOLS = 4,
         [Description("CAIXA")]
         CX = 5,
-        [Description("CÁPSULA")]
+        [Description("CAPSULA")]
         CAP = 6,
         [Description("CARPULE")]
         CARP = 7,
         [Description("COMPRIMIDO")]
-        COP = 8,
+        COMP = 8,
         [Description("DOSE")]
         DOSE = 9,
-        [Description("DRÁGEA")]
+        [Description("DRï¿½GEA")]
         DRG = 10,
         [Description("ENVELOPE")]
         ENV = 11,
@@ -39,9 +39,9 @@ namespace Pharma.API.Model
         FR = 13,
         [Description("FRASCO AMPOLA")]
         FA = 14,
-        [Description("GALÃO")]
+        [Description("GALï¿½O")]
         GAL = 15,
-        [Description("GLÓBULO")]
+        [Description("GLï¿½BULO")]
         GLOB = 16,
         [Description("GOTAS")]
         GTS = 17,
@@ -51,21 +51,21 @@ namespace Pharma.API.Model
         L = 19,
         [Description("MICROGRAMAS")]
         MCG = 20,
-        [Description("MILHÕES DE UNIDADES INTERNACIONAIS")]
+        [Description("MILHï¿½ES DE UNIDADES INTERNACIONAIS")]
         MUI = 21,
         [Description("MILIGRAMA")]
         MG = 22,
-        [Description("MILÍLITRO")]
+        [Description("MILï¿½LITRO")]
         ML = 23,
-        [Description("ÓVULO")]
+        [Description("ï¿½VULO")]
         OVL = 24,
         [Description("PASTILHA")]
         PAS = 25,
         [Description("LATA")]
         LT = 26,
-        [Description("PÉROLA")]
+        [Description("Pï¿½ROLA")]
         PER = 27,
-        [Description("PÍLULA")]
+        [Description("Pï¿½LULA")]
         PIL = 28,
         [Description("POTE")]
         PT = 29,
@@ -73,7 +73,7 @@ namespace Pharma.API.Model
         KG = 30,
         [Description("SERINGA")]
         SER = 31,
-        [Description("SUPOSITÓRIO")]
+        [Description("SUPOSITï¿½RIO")]
         SUP = 32,
         [Description("TABLETE")]
         TABLE = 33,
@@ -85,45 +85,73 @@ namespace Pharma.API.Model
         UN = 36,
         [Description("UNIDADE INTERNACIONAL")]
         UI = 37,
-        [Description("CENTÍMETRO")]
+        [Description("CENTï¿½METRO")]
         CM = 38,
         [Description("CONJUNTO")]
         CONJ = 39,
         [Description("KIT")]
         KIT = 40,
-        [Description("MAÇO")]
-        MÇ = 41,
         [Description("METRO")]
-        M = 42,
+        M = 41,
         [Description("PACOTE")]
-        PC = 43,
-        [Description("PEÇA")]
-        PÇ = 44,
+        PC = 42,
         [Description("ROLO")]
-        RL = 45,
+        RL = 43,
         [Description("GRAY")]
-        GY = 46,
+        GY = 44,
         [Description("CENTGRAY")]
-        CGY = 47,
+        CGY = 45,
         [Description("PAR")]
-        PAR = 48,
-        [Description("ADESIVO TRANSDÉRMICO")]
-        ADES = 49,
+        PAR = 46,
+        [Description("ADESIVO TRANSDï¿½RMICO")]
+        ADES = 47,
         [Description("EFEV COMPRIMIDO EFERVECENTE")]
-        COE = 50,
-        [Description("MST COMPRIMIDO MASTIGÁVEL")]
-        COM = 51,
+        COE = 48,
+        [Description("MST COMPRIMIDO MASTIGï¿½VEL")]
+        COM = 49,
         [Description("SACHE")]
-        SACHE = 52,
+        SACHE = 50,
         [Description("MILILITROS")]
-        MM = 53,
+        MM = 51,
         [Description("GOTA")]
-        GT = 54,
+        GT = 52,
         [Description("CARTELA")]
-        CARY = 55,
+        CARY = 53,
         [Description("BLOCO")]
-        BLC = 56,
+        BLC = 54,
         [Description("POMADA")]
-        POM = 57           
+        POM = 55
     }
 }
+
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('AMPOLA');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('BILHï¿½ES DE UNIDADES INTERNACIONAIS');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('BISNAGA');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('BOLSA');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('CAIXA');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('CAPSULA');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('CARPULE');
+//
+// INSERT INTO public."UnitOfMeasurement"
+//     ("Description")
+// VALUES('COMPRIMIDO');

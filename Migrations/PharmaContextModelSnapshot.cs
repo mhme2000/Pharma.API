@@ -160,8 +160,9 @@ namespace Pharma.API.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("ExpirationDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("ExpirationDate")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
@@ -220,6 +221,9 @@ namespace Pharma.API.Migrations
                     b.Property<int>("StockTransactionId")
                         .HasColumnType("integer");
 
+                    b.Property<double>("UnitaryValue")
+                        .HasColumnType("double precision");
+
                     b.HasKey("StockTransactionItemId");
 
                     b.HasIndex("StockItemId");
@@ -237,11 +241,8 @@ namespace Pharma.API.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StockTransactionId"));
 
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("CreatedAt")
+                        .HasColumnType("integer");
 
                     b.Property<int>("TransactionStatusId")
                         .HasColumnType("integer");

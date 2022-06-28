@@ -11,10 +11,39 @@ namespace Pharma.API.Model
     public enum TransactionStatus
     {
         Aberto = 1,
-        Aguardando = 2,
-        EmEntrega = 3,
-        Recebido = 4,
-        Cancelado = 5,
+        AguardandoSeparacao = 2,
+        EmSeparacao = 3,
+        EmEntrega = 4,
+        Finalizado = 5,
         Devolvido = 6,
+        Cancelado = 7,
     }
 }
+
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('Aberto');
+//
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('AguardandoSeparacao');
+//
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('EmSeparacao');
+//
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('EmEntrega');
+//
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('Finalizado');
+//
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('Devolvido');
+//
+// INSERT INTO public."TransactionStatus"
+//     ("Description")
+// VALUES('Cancelado');

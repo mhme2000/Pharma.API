@@ -16,3 +16,19 @@ namespace Pharma.API.Model
         Estoquista = 4,
     }
 }
+
+// INSERT INTO public."UserType"
+//     ("Description")
+// VALUES('Cliente');
+//
+// INSERT INTO public."UserType"
+//     ("Description")
+// VALUES('Gerente');
+//
+// INSERT INTO public."UserType"
+//     ("Description")
+// VALUES('Farmaceutico');
+//
+// INSERT INTO public."UserType"
+//     ("Description")
+// VALUES('Estoquista');

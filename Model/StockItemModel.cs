@@ -12,10 +12,15 @@ namespace Pharma.API.Model
         [JsonIgnore]
         public ProductModel? Product { get; private set; }
         public string Batch { get; set; }
-        public DateTime ExpirationDate { get; set; }
+        public string ExpirationDate { get; set; }
         public int Balance { get; private set; }   
         public float UnitaryValue { get; set; }
         private readonly List<StockTransactionItemModel> _stockTransactionItems = new List<StockTransactionItemModel>();
         public IReadOnlyCollection<StockTransactionItemModel> StockTransactionItems => _stockTransactionItems;
+
+        public void UpdateBalance(int quantity)
+        {
+            Balance -= quantity;
+        }
     }
 }

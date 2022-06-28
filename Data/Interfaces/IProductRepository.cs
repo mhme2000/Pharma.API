@@ -9,6 +9,7 @@ namespace Pharma.API.Data.Interfaces
         IEnumerable<ProductModel>? GetAll();
         void Delete(ProductModel product);
         void Update(ProductModel product);
+        IEnumerable<ProductModel> GetActiveItems();
     }
 
 }

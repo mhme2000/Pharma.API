@@ -5,8 +5,8 @@ namespace Pharma.API.Model
     public class StockTransactionModel
     {
         public int StockTransactionId { get; private set; }
-        public float Amount { get; private set; }
-        public DateTime CreatedAt { get; private set; } = DateTime.Now;
+
+        public DateTime CreatedAt { get; private set; } = DateTime.Today.Date;
         public int UserId { get; set; }
         [JsonIgnore]
         public UserModel User { get; private set; }
@@ -16,8 +16,18 @@ namespace Pharma.API.Model
         public int TransactionStatusId { get; set; }
         [JsonIgnore]
         public TransactionStatusModel? TransactionStatus { get; private set; }
-        private readonly List<StockTransactionItemModel> _stockTransactionItems = new List<StockTransactionItemModel>();
+        public readonly List<StockTransactionItemModel> _stockTransactionItems = new List<StockTransactionItemModel>();
         public IReadOnlyCollection<StockTransactionItemModel> StockTransactionItems => _stockTransactionItems;
 
+        // private static double AmountGenerate(List<StockTransactionItemModel> items)
+        // {
+        //     double amount = 0.0;
+        //     foreach (var item in items)
+        //     {
+        //         amount += (item.Quantity * item.UnitaryValue);
+        //     }
+        //
+        //     return amount;
+        // }
     }
 }

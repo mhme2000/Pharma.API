@@ -15,3 +15,15 @@ namespace Pharma.API.Model
         }
     }
 }
+
+// INSERT INTO public."ProductType"
+//     ("Description")
+// VALUES('Insumos');
+//
+// INSERT INTO public."ProductType"
+//     ("Description")
+// VALUES('Medicamentos');
+//
+// INSERT INTO public."ProductType"
+//     ("Description")
+// VALUES('Outros');

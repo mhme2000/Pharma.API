@@ -16,3 +16,19 @@ namespace Pharma.API.Model
         SaidaPorPedidoDeProduto = 4,
     }
 }
+
+// INSERT INTO public."TransactionType"
+//     ("Description")
+// VALUES('EntradaEstoque');
+//
+// INSERT INTO public."TransactionType"
+//     ("Description")
+// VALUES('EntradaPorDevolucao');
+//
+// INSERT INTO public."TransactionType"
+//     ("Description")
+// VALUES('SaidaEstoque');
+//
+// INSERT INTO public."TransactionType"
+//     ("Description")
+// VALUES('SaidaPorPedidoDeProduto');

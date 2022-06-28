@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public UserController(IUserRepository userRepository, IMapper mapper)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace Pharma.API.Controllers
         {
             var model = _userRepository.GetById(userId);
             if (model == null)
-                return NotFound("Usuário não encontrado.");
+                return NotFound("Usuï¿½rio nï¿½o encontrado.");
             return Ok(model);
         }
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Pharma.API.Controllers
         {
             var model = _userRepository.GetAll();
             if (model == null)
-                return NotFound("Nenhum usuário cadastrado.");
+                return NotFound("Nenhum usuï¿½rio cadastrado.");
             var result = _mapper.Map<IEnumerable<UserDTO>>(model);
 
             return Ok(result);
@@ -49,7 +49,7 @@ namespace Pharma.API.Controllers
         {
             var user = _userRepository.GetById(model.UserId);
             if (user == null)
-                return NotFound("Usuário não encontrado.");
+                return NotFound("Usuï¿½rio nï¿½o encontrado.");
             _userRepository.Update(model);
             return Ok();
         }
@@ -59,7 +59,7 @@ namespace Pharma.API.Controllers
         {
             var user = _userRepository.GetById(userId);
             if (user == null)
-                return NotFound("Usuário não encontrado.");
+                return NotFound("Usuï¿½rio nï¿½o encontrado.");
             _userRepository.Delete(user);
             return Ok();
 

@@ -30,7 +30,6 @@ namespace Pharma.API.Data.Repositories
         public void Update(StockItemModel stockItem)
         {
             _context.StockItem?.Update(stockItem);
-            _context.SaveChanges();
         }
 
         public void Delete(StockItemModel stockItem)
@@ -38,6 +37,7 @@ namespace Pharma.API.Data.Repositories
             _context.StockItem?.Remove(stockItem);
             _context.SaveChanges();
         }
+
     }
 
 }

@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StockItemController : ControllerBase
+    public class StockItemsController : ControllerBase
     {
         private readonly IStockItemRepository _stockItemRepository;
         private readonly IMapper _mapper;
-        public StockItemController(IStockItemRepository stockItemRepository, IMapper mapper)
+        public StockItemsController(IStockItemRepository stockItemRepository, IMapper mapper)
         {
             _stockItemRepository = stockItemRepository;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace Pharma.API.Controllers
         {
             var model = _stockItemRepository.GetById(stockItemId);
             if (model == null)
-                return NotFound("Item não encontrado.");
+                return NotFound("Item nÃ£o encontrado.");
             return Ok(model);
         }
         [HttpGet]
@@ -40,7 +40,6 @@ namespace Pharma.API.Controllers
             if (model == null)
                 return NotFound("Nenhum item cadastrado.");
             var result = _mapper.Map<IEnumerable<StockItemDTO>>(model);
-
             return Ok(result);
         }
 
@@ -49,7 +48,7 @@ namespace Pharma.API.Controllers
         {
             var stockItem = _stockItemRepository.GetById(model.StockItemId);
             if (stockItem == null)
-                return NotFound("Item não encontrado.");
+                return NotFound("Item nï¿½o encontrado.");
             _stockItemRepository.Update(model);
             return Ok();
         }
@@ -59,10 +58,9 @@ namespace Pharma.API.Controllers
         {
             var stockItem = _stockItemRepository.GetById(stockItemId);
             if (stockItem == null)
-                return NotFound("Item não encontrado.");
+                return NotFound("Item nï¿½o encontrado.");
             _stockItemRepository.Delete(stockItem);
             return Ok();
-
         }
     }
 }

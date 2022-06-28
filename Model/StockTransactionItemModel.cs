@@ -12,6 +12,6 @@ namespace Pharma.API.Model
         [JsonIgnore]
         public StockItemModel? StockItem { get; private set; }
         public int Quantity { get; set; }
-  
+        public double UnitaryValue { get; set; }
     }
 }

@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StockController : ControllerBase
+    public class StocksController : ControllerBase
     {
         private readonly IStockRepository _stockRepository;
         private readonly IMapper _mapper;
-        public StockController(IStockRepository stockRepository, IMapper mapper)
+        public StocksController(IStockRepository stockRepository, IMapper mapper)
         {
             _stockRepository = stockRepository;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace Pharma.API.Controllers
         {
             var model = _stockRepository.GetById(stockId);
             if (model == null)
-                return NotFound("Estoque não encontrado.");
+                return NotFound("Estoque nï¿½o encontrado.");
             return Ok(model);
         }
         [HttpGet]
@@ -49,7 +49,7 @@ namespace Pharma.API.Controllers
         {
             var stock = _stockRepository.GetById(model.StockId);
             if (stock == null)
-                return NotFound("Estoque não encontrado.");
+                return NotFound("Estoque nï¿½o encontrado.");
             _stockRepository.Update(model);
             return Ok();
         }
@@ -59,7 +59,7 @@ namespace Pharma.API.Controllers
         {
             var stock = _stockRepository.GetById(stockId);
             if (stock == null)
-                return NotFound("Estoque não encontrado.");
+                return NotFound("Estoque nï¿½o encontrado.");
             _stockRepository.Delete(stock);
             return Ok();
 

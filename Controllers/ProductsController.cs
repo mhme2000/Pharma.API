@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public ProductController(IProductRepository productRepository, IMapper mapper)
+        public ProductsController(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace Pharma.API.Controllers
         {
             var model = _productRepository.GetById(productId);
             if (model == null)
-                return NotFound("Produto não encontrado.");
+                return NotFound("Produto nï¿½o encontrado.");
             return Ok(model);
         }
         [HttpGet]
@@ -48,7 +48,7 @@ namespace Pharma.API.Controllers
         {
             var product = _productRepository.GetById(model.ProductId);
             if (product == null)
-                return NotFound("Produto não encontrado.");
+                return NotFound("Produto nï¿½o encontrado.");
             _productRepository.Update(model);
             return Ok();
         }
@@ -58,9 +58,16 @@ namespace Pharma.API.Controllers
         {
             var product = _productRepository.GetById(productId);
             if (product == null)
-                return NotFound("Produto não encontrado.");
+                return NotFound("Produto nï¿½o encontrado.");
             _productRepository.Delete(product);
             return Ok();
+        }
+        
+        [HttpGet("GetActiveItems")]
+        public IActionResult GetActiveItems()
+        {
+            var response = _productRepository.GetActiveItems();
+            return Ok(response);
         }
     }
 }

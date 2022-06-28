@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PharmaController : ControllerBase
+    public class PharmasController : ControllerBase
     {
         private readonly IPharmaRepository _pharmaRepository;
         private readonly IMapper _mapper;
-        public PharmaController(IPharmaRepository pharmaRepository, IMapper mapper)
+        public PharmasController(IPharmaRepository pharmaRepository, IMapper mapper)
         {
             _pharmaRepository = pharmaRepository;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace Pharma.API.Controllers
         {
             var model = _pharmaRepository.GetById(pharmaId);
             if (model == null)
-                return NotFound("Farmácia não encontrada.");
+                return NotFound("Farmï¿½cia nï¿½o encontrada.");
             return Ok(model);
         }
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Pharma.API.Controllers
         {
             var model = _pharmaRepository.GetAll();
             if (model == null)
-                return NotFound("Nenhum farmácia cadastrada.");
+                return NotFound("Nenhum farmï¿½cia cadastrada.");
             var result = _mapper.Map<IEnumerable<PharmaDTO>>(model);
 
             return Ok(result);
@@ -49,7 +49,7 @@ namespace Pharma.API.Controllers
         {
             var pharma = _pharmaRepository.GetById(model.PharmaId);
             if (pharma == null)
-                return NotFound("Farmácia não encontrada.");
+                return NotFound("Farmï¿½cia nï¿½o encontrada.");
             _pharmaRepository.Update(model);
             return Ok();
         }
@@ -59,7 +59,7 @@ namespace Pharma.API.Controllers
         {
             var pharma = _pharmaRepository.GetById(pharmaId);
             if (pharma == null)
-                return NotFound("Farmácia não encontrada.");
+                return NotFound("Farmï¿½cia nï¿½o encontrada.");
             _pharmaRepository.Delete(pharma);
             return Ok();
 

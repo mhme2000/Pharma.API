@@ -8,11 +8,11 @@ namespace Pharma.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PersonController : ControllerBase
+    public class PersonsController : ControllerBase
     {
         private readonly IPersonRepository _personRepository;
         private readonly IMapper _mapper;
-        public PersonController(IPersonRepository personRepository, IMapper mapper)
+        public PersonsController(IPersonRepository personRepository, IMapper mapper)
         {
             _personRepository = personRepository;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace Pharma.API.Controllers
         {
             var model = _personRepository.GetById(personId);
             if (model == null)
-                return NotFound("Pessoa não encontrada.");
+                return NotFound("Pessoa nï¿½o encontrada.");
             return Ok(model);
         }
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Pharma.API.Controllers
         {
             var model = _personRepository.GetAll();
             if (model == null)
-                return NotFound("Nenhum indivíduo cadastrado.");
+                return NotFound("Nenhum indivï¿½duo cadastrado.");
             var result = _mapper.Map<IEnumerable<PersonDTO>>(model);
 
             return Ok(result);
@@ -49,7 +49,7 @@ namespace Pharma.API.Controllers
         {
             var person = _personRepository.GetById(model.PersonId);
             if (person == null)
-                return NotFound("Pessoa não encontrada.");
+                return NotFound("Pessoa nï¿½o encontrada.");
             _personRepository.Update(model);
             return Ok();
         }
@@ -59,7 +59,7 @@ namespace Pharma.API.Controllers
         {
             var person = _personRepository.GetById(personId);
             if (person == null)
-                return NotFound("Pessoa não encontrada.");
+                return NotFound("Pessoa nï¿½o encontrada.");
             _personRepository.Delete(person);
             return Ok();
 
