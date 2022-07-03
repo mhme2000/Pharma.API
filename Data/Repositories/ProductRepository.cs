@@ -38,7 +38,7 @@ namespace Pharma.API.Data.Repositories
             _context.Product?.Remove(product);
             _context.SaveChanges();
         }
-        
+
         public IEnumerable<ProductModel> GetActiveItems()
         {
             return _context.Product?.Include(u => u.StockItems).Include(u => u.ProductType).Include(u => u.UnitOfMeasurement).Where(t => t.Active).AsEnumerable();

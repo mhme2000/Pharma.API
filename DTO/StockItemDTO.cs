@@ -12,7 +12,7 @@ namespace Pharma.API.DTO
         public int ProductId { get; private set; }
         public ProductModel? Product { get; set; }
         public string Lote { get; private set; }
-        public DateTime DataValidade { get; private set; }
+        public string DataValidade { get; private set; }
         public int Saldo { get; private set; }
         public float UnitaryValue { get; private set; }
 

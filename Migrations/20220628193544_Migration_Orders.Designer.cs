@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pharma.API.Data;
@@ -11,9 +12,10 @@ using Pharma.API.Data;
 namespace Pharma.API.Migrations
 {
     [DbContext(typeof(PharmaContext))]
-    partial class PharmaContextModelSnapshot : ModelSnapshot
+    [Migration("20220628193544_Migration_Orders")]
+    partial class Migration_Orders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,9 +111,6 @@ namespace Pharma.API.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("Note")
@@ -224,8 +223,8 @@ namespace Pharma.API.Migrations
                     b.Property<int>("StockTransactionId")
                         .HasColumnType("integer");
 
-                    b.Property<double>("UnitaryValue")
-                        .HasColumnType("double precision");
+                    b.Property<float>("UnitaryValue")
+                        .HasColumnType("real");
 
                     b.HasKey("StockTransactionItemId");
 
@@ -243,6 +242,9 @@ namespace Pharma.API.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StockTransactionId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("TransactionStatusId")
                         .HasColumnType("integer");

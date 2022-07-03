@@ -1,12 +1,10 @@
-    using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Pharma.API.Model
 {
     public class StockTransactionModel
     {
         public int StockTransactionId { get; private set; }
-
-        public DateTime CreatedAt { get; private set; } = DateTime.Today.Date;
         public int UserId { get; set; }
         [JsonIgnore]
         public UserModel User { get; private set; }

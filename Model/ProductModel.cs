@@ -7,7 +7,8 @@ namespace Pharma.API.Model
         public int ProductId { get; private set; }
         public string Description { get; set; }
         public string Note { get; set; }
-        public bool Active  { get; set; }
+        public bool Active { get; set; }
+        public string? Image { get; set; }
         public int ProductTypeId { get; set; }
         [JsonIgnore]
         public ProductTypeModel? ProductType { get; private set; }

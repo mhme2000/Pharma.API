@@ -62,7 +62,7 @@ namespace Pharma.API.Controllers
             _productRepository.Delete(product);
             return Ok();
         }
-        
+
         [HttpGet("GetActiveItems")]
         public IActionResult GetActiveItems()
         {
